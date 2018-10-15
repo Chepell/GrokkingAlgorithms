@@ -2,32 +2,33 @@ import java.util.*;
 
 public class Algos {
 
+    // метод возвращает индекс искомого элемнта в массиве
     public static int binarySearch(int[] array, int element) {
         // макс/мин индексы элементов в массиве
         int high = array.length - 1;
         int low = 0;
         int mid; // индекс среднего элемента
-        int guess; // значение среднего элемента
+        int medium; // значение среднего элемента
 
         // цикл продолжается пока выбранный подмассив состоит хотя бы из одного элемента
         while (low <= high) {
             mid = (high + low) / 2;
-            guess = array[mid];
-            // если средний элемент меньше чем искомый
-            if (guess < element) {
+            medium = array[mid];
+            // если искомый элемент больше среднего
+            if (medium < element) {
                 low = mid + 1; // то отбрасываю левую часть массива
-                // если средний элемент больше чем искомый
-            } else if (guess > element) {
+                // если искомый элемент меньше среднего
+            } else if (element < medium) {
                 high = mid - 1; // то отбрасываю правую часть
             } else {
-                return mid; // иначе нашли элемени
+                return mid; // цикл продолжается пока не попадаю сюда или не соблюдается условие (тогда элемента нет)
             }
         }
         return -1; // если из цикла дошли сюда, значит элемента в массиве не оказалось, возвращаю -1
         // значение несуществующего индекса
     }
 
-    // сортровка выбором. медленная O(n^2), такая же как и пузырьковая
+    // сортировка выбором. медленная O(n^2), такая же как и пузырьковая
     public static int[] selectionSort(int[] array) {
         int length = array.length; // длина массива
         int[] sortArray = new int[length]; // создание нового массива для сортированных символов
@@ -69,17 +70,17 @@ public class Algos {
 
     // рекурсивный метод расчета факториала
     public static long recursiveFactorial(int x) {
-        if (x > 1) { // базовый случай пока значение аргумента больше 1
+        if (x <= 1) { // когда параметр 1 или меньше
             return 1;
         } else {
             return x * recursiveFactorial(x - 1); // рекурсивный случай
         }
     }
 
-    public static void countDown(int x) {
-        if (x < 0) return; // базовый случай
+    public static void recursiveCountDown(int x) {
+        if (x < 0) return; // базовый случай, прекратить выполнение
         System.out.println(x);
-        countDown(x - 1); // рекурсивный случай
+        recursiveCountDown(x - 1); // рекурсивный случай
     }
 
     // сумма элементов массива в цикле
@@ -94,7 +95,7 @@ public class Algos {
     // сумма элементов в массиве рекурсией
     public static int recursiveSum(int[] array) {
         if (array.length == 0) { // базовый случай, когда в массиве нет элементов
-            return 0; // возвращаю ноль
+            return 0;
         } else { // иначе
             int firstElement = array[0]; // сохраняю первый элемент в переменную
             // удаляю из массива первый элемент используя приватный метод
@@ -102,30 +103,30 @@ public class Algos {
             // или используя встроенный метод
             array = Arrays.copyOfRange(array, 1, array.length);
             // возвращаю сумму элемента и рекурсивного вызова метода с новым массивом
-            return firstElement + recursiveSum(array);
+            return firstElement + recursiveSum(array); // в итоге все разложится на сумму из еденичных элементов массива
         }
     }
 
     // рекурсивный метод расчета количества элементов в массиве
     public static int recursiveCount(int[] array) {
-        if (array.length == 0) { // базовый случай, массив пуст
-            return 0; // возвращаю ноль
+        if (array.length == 0) { // базовый случай, массив не содержит элементов
+            return 0;
         } else {
-            // иначе отчезаю один элемент у массива
-            array = Arrays.copyOfRange(array, 0, array.length - 1);
+            // иначе отрезаю первый элемент у массива
+            array = Arrays.copyOfRange(array, 1, array.length);
             // возвращаю 1 плюс рекурсивный вызов метода с новым массивом
             return 1 + recursiveCount(array);
         }
     }
 
-    // рекурсивный метод поиска минимального значения в массиве
-    public static int recursiveMax(int[] list) {
-        if (list.length == 2) { // базовый случай, массив из двух элементов
-            return list[0] > list[1] ? list[0] : list[1];
+    // рекурсивный метод поиска максимального значения в массиве
+    public static int recursiveMax(int[] array) {
+        if (array.length == 2) { // базовый случай, массив из двух элементов
+            return array[0] > array[1] ? array[0] : array[1];
         }
         // у массива отрезаю один элемент и вызываю рекурсивно метод
-        int subMax = recursiveMax(Arrays.copyOfRange(list, 1, list.length));
-        return list[0] > subMax ? list[0] : subMax;
+        int subMax = recursiveMax(Arrays.copyOfRange(array, 1, array.length));
+        return array[0] > subMax ? array[0] : subMax;
     }
 
 

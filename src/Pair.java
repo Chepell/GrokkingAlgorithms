@@ -1,3 +1,4 @@
+// демонстрация обмена значений
 public class Pair {
     private int x;
     private int y;
@@ -7,6 +8,7 @@ public class Pair {
         this.y = y;
     }
 
+    // без временной переменной с использованием побитового XOR
     void swap() {
         x = x ^ y;
         y = x ^ y;
