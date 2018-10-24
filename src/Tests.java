@@ -15,7 +15,9 @@ public class Tests {
 //        System.out.println("Метод меняет местами значения в полях объекта не используя временную переменную");
 //        System.out.println(pair);
 
-		Algos.recursivePrimeFactorDecomposition(132);
+//		Algos.recursivePrimeFactorDecomposition(132);
+
+		System.out.println(Algos.isPalindrome("HeH"));
 
     }
 }
