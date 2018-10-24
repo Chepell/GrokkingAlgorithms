@@ -15,9 +15,7 @@ public class Tests {
 //        System.out.println("Метод меняет местами значения в полях объекта не используя временную переменную");
 //        System.out.println(pair);
 
-
-        Algos.recursiveSum(array);
-        System.out.println(Algos.recursiveCount(array));
+		Algos.recursivePrimeFactorDecomposition(132);
 
     }
 }

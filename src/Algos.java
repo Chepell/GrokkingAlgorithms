@@ -77,6 +77,23 @@ public class Algos {
         }
     }
 
+	// рекурсивное разложения числа на множители
+	public static void recursivePrimeFactorDecomposition(int number) {
+		int diveder = 2;
+		while (number >= diveder) {
+			if (number % diveder == 0) {
+				if (diveder != number) {
+					System.out.print(diveder + " ");
+					recursivePrimeFactorDecomposition(number / diveder);
+				} else {
+					System.out.print(diveder); // вывод последнего делителя
+				}
+				return; // и прерывание цикла
+			}
+			diveder++;
+		}
+	}
+
     public static void recursiveCountDown(int x) {
         if (x < 0) return; // базовый случай, прекратить выполнение
         System.out.println(x);
