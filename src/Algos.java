@@ -84,6 +84,12 @@ public class Algos {
 		return isPalindrome(cutWord);
 	}
 
+	// рекурсивное определение значение числа фибоначчи по номеру
+	public static long recursiveFibonacci(int n) {
+		if (n < 3) return 1; // базовый случай, когда всего два первых числа в последовательности
+		return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+	}
+
 	// рекурсивный метод расчета факториала
 	public static long recursiveFactorial(int x) {
 		if (x <= 1) { // когда параметр 1 или меньше
