@@ -1,9 +1,18 @@
 import java.util.*;
 
+/**
+ * В классе собраны реализации различных алгоритмов и нетипичных методов
+ */
 public class Algos {
 
-	// метод возвращает индекс искомого элемнта в массиве
-	public static int binarySearch(int[] array, int element) {
+	/**
+	 * Метод возвращает индекс искомого элемента в массиве
+	 *
+	 * @param array   отсортированный массив
+	 * @param element значение элемента для поиска
+	 * @return возвращает индекс искомого элемента в массиве, либо -1 если такого элемента нет
+	 */
+	protected static int binarySearch(int[] array, int element) {
 		// макс/мин индексы элементов в массиве
 		int high = array.length - 1;
 		int low = 0;
@@ -24,11 +33,15 @@ public class Algos {
 				return mid; // цикл продолжается пока не попадаю сюда или не соблюдается условие (тогда элемента нет)
 			}
 		}
-		return -1; // если из цикла дошли сюда, значит элемента в массиве не оказалось, возвращаю -1
-		// значение несуществующего индекса
+		return -1;
 	}
 
-	// сортировка выбором. медленная O(n^2), такая же как и пузырьковая
+	/**
+	 * Сортировка выбором. медленная O(n^2), такая же как и пузырьковая
+	 *
+	 * @param array массив для сортировки
+	 * @return отсортированный массив
+	 */
 	public static int[] selectionSort(int[] array) {
 		int length = array.length; // длина массива
 		int[] sortArray = new int[length]; // создание нового массива для сортированных символов
@@ -39,10 +52,15 @@ public class Algos {
 //            quickSort[smallestIndex] = Integer.MAX_VALUE; // даный вариант работает намного быстрее
 			array = withoutElement(array, smallestIndex); // удаляю из массива элемент с найденный минимумом
 		}
-		return sortArray; // в конце возвращаю
+		return sortArray;
 	}
 
-	// метод для поиска индекса минимального элемента в массиве
+	/**
+	 * Метод для поиска индекса минимального элемента в массиве
+	 *
+	 * @param array массив для поиска
+	 * @return индекс минимального элемента
+	 */
 	private static int findSmallest(int[] array) {
 		int smallestIndex = 0;
 		int smallest = array[0];
@@ -55,7 +73,13 @@ public class Algos {
 		return smallestIndex;
 	}
 
-	// метод возвращает новый массив с удаленным по индексу элементом
+	/**
+	 * Метод возвращает новый массив с удаленным по индексу элементом
+	 *
+	 * @param array         массив для удаления элемента
+	 * @param indexToDelete индекс элемента, который нужно удалить
+	 * @return новыцй массив без удаленного элемента
+	 */
 	private static int[] withoutElement(int[] array, int indexToDelete) {
 		int[] newArray = new int[array.length - 1];
 		for (int i = 0; i < array.length; i++) {
@@ -68,7 +92,14 @@ public class Algos {
 		return newArray;
 	}
 
-	// рекурсивное определение является ли слово палиндромом
+	/**
+	 * Рекурсивное определение является ли слово палиндромом.
+	 * Палиндром (от греч. palindromos – бегущий обратно) – слово,
+	 * которое читается одинаково слева направо и справа налево (например, ротор).
+	 *
+	 * @param word слово для проверки
+	 * @return true/false
+	 */
 	public static boolean isPalindrome(String word) {
 		// базовый выход, когда слово всего один символ
 		if (word.length() <= 1) {
@@ -84,13 +115,23 @@ public class Algos {
 		return isPalindrome(cutWord);
 	}
 
-	// рекурсивное определение значение числа фибоначчи по номеру
+	/**
+	 * Рекурсивное определение значение числа фибоначчи по номеру
+	 *
+	 * @param n номер числа в последовательности фибоначчи
+	 * @return число фибоначчи
+	 */
 	public static long recursiveFibonacci(int n) {
 		if (n < 3) return 1; // базовый случай, когда всего два первых числа в последовательности
 		return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
 	}
 
-	// рекурсивный метод расчета факториала
+	/**
+	 * Рекурсивный метод расчета факториала
+	 *
+	 * @param x факториал Х
+	 * @return значение
+	 */
 	public static long recursiveFactorial(int x) {
 		if (x <= 1) { // когда параметр 1 или меньше
 			return 1;
@@ -99,7 +140,11 @@ public class Algos {
 		}
 	}
 
-	// рекурсивное разложения числа на множители
+	/**
+	 * Рекурсивное разложения числа на множители
+	 *
+	 * @param number число для разложения
+	 */
 	public static void recursivePrimeFactorDecomposition(int number) {
 		int diveder = 2;
 		while (number >= diveder) {
@@ -116,7 +161,11 @@ public class Algos {
 		}
 	}
 
-	// обратный отсчет с помощью рекурсии
+	/**
+	 * Обратный отсчет с помощью рекурсии
+	 *
+	 * @param x начало отсчета
+	 */
 	public static void recursiveCountDown(int x) {
 		if (x < 0) return; // базовый случай, прекратить выполнение
 		System.out.println(x);
@@ -147,7 +196,11 @@ public class Algos {
 		}
 	}
 
-	// рекурсивный метод расчета количества элементов в массиве
+	/**
+	 * Рекурсивный метод расчета количества элементов в массиве
+	 * @param array Массив для расчета
+	 * @return Количество элементов в массиве
+	 */
 	public static int recursiveCount(int[] array) {
 		if (array.length == 0) { // базовый случай, массив не содержит элементов
 			return 0;
@@ -159,7 +212,11 @@ public class Algos {
 		}
 	}
 
-	// рекурсивный метод поиска максимального значения в массиве
+	/**
+	 * Рекурсивный метод поиска максимального значения в массиве
+	 * @param array Массив для поиска
+	 * @return Найденный максимальный элемент в массиве
+	 */
 	public static int recursiveMax(int[] array) {
 		if (array.length == 2) { // базовый случай, массив из двух элементов
 			return array[0] > array[1] ? array[0] : array[1];
@@ -169,15 +226,25 @@ public class Algos {
 		return array[0] > subMax ? array[0] : subMax;
 	}
 
-
-	// алгоритм евклида, наибольший общий делитель
+	/**
+	 * Алгоритм евклида, наибольший общий делитель
+	 * @param a Первое число
+	 * @param b Второе число
+	 * @return НОД
+	 */
 	public static int nod(int a, int b) {
 		if (b == 0) return a; // базовый случай, если b стал 0, то a - нод
 		int x = a % b;
 		return nod(b, x);
 	}
 
-	// алгоритм быстрой сортировки, O(n * log n)
+	/**
+	 * Рекурсивный алгоритм быстрой сортировки, сложность O(n * log n)
+	 * @param array Массив для сортировки
+	 * @param beginInd Начальный индекс массива
+	 * @param endInd Конечный индекс массива
+	 */
+	//
 	public static void quickSort(int[] array, int beginInd, int endInd) {
 		// базовый случай, массив состоит из одного элемента или пустой
 		// или начальный индекс стал больше либо равен конечному
@@ -225,5 +292,14 @@ public class Algos {
 		if (endInd > i) {
 			quickSort(array, i, endInd);
 		}
+	}
+
+	/**
+	 * Расчет двоичного логорифма с использованием базовой библиотеки java.lang.Math
+	 * @param number Число для которого нужно рассчитать двоичный логарифм
+	 * @return Результат рассчета двоичного логарифма
+	 */
+	public static int binaryLog(int number) {
+		return (int) Math.round(Math.log(number) / Math.log(2));
 	}
 }

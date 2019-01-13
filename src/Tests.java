@@ -17,8 +17,9 @@ public class Tests {
 
 //		Algos.recursivePrimeFactorDecomposition(132);
 
-		System.out.println(Algos.isPalindrome("HeH"));
-		System.out.println(Algos.recursiveFibonacci(6));
 
-    }
+
+		int i = Algos.binaryLog(1_000_000);
+		System.out.println(i);
+	}
 }
