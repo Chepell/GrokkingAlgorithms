@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Tests {
     static int[] array = {77, 79, -45, 63, 4, 9, 1, -50};
 
@@ -21,5 +25,13 @@ public class Tests {
 
 		int i = Algos.binaryLog(1_000_000);
 		System.out.println(i);
+
+		ArrayList<String> objects = new ArrayList<>();
+
+		List<Integer> list = new LinkedList<>();
+
+		Thread thread = new Thread();
+
+
 	}
 }
